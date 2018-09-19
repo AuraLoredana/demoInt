@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="ISO-8859-1" />
+    <title>Locale</title>
+</head>
+<body>
+
+<div style="margin-top: 0; color: red;">
+    <p th:text="#{my.msg.selectlang}"></p>
+    <a th:href="@{/locale?lang=US}">EN</a> |
+    <a th:href="@{/locale?lang=FR}">FR</a>
+</div>
+
+<h1 th:text="#{my.msg.hello}"></h1>
+<p th:text="#{my.msg.greeting}"></p>
+<a th:href="@{/persons}"><h1 th:text="#{my.msg.persons}"></h1></a><br />
+<a th:href="@{/view/persons}"><h1 th:text="#{my.msg.listpers}"></h1></a><br />
+</body>
+</html>

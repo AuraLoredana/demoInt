@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="ISO-8859-1" />
+    <title>Locale</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+
+<div class="w3-bar w3-black">
+    <a th:href="@{/}" class="w3-bar-item w3-hover-blue">Home</a>
+    <div style="margin-top: 0; float: right; margin-right: 20px;color: white;">
+        <p th:text="#{my.msg.selectlang}"></p>
+        <a th:href="@{/locale?lang=US}">EN</a> |
+        <a th:href="@{/locale?lang=FR}">FR</a>
+    </div>
+</div>
+
+<h1 th:text="#{my.msg.persons}"></h1>
+<a class="w3-btn w3-green" th:href="@{/view/persons/create}"><p th:text="#{my.msg.create}"></p></a>
+<table class="w3-table w3-striped">
+    <thead>
+
+    <th>Id</th><th><p th:text="#{my.msg.name}"></p></th><th>Age</th><th>Image</th>
+
+    </thead>
+    <tbody>
+    <tr th:each="person:${persons}">
+        <td th:text="${person.id}"></td>
+        <td th:text="${person.name}"></td>
+        <td th:text="${person.age}"></td>
+        <td><div th:if="${person.image!=null}"><a th:href="@{'/view/persons/image/'+ ${person.id}}"><p th:text="#{my.msg.download}"></p></a></div>
+            <div th:if="${person.image!=null}"><a th:href="@{'/view/persons/imageV/'+ ${person.id}}"><p th:text="#{my.msg.view}"></p></a></div>
+            <div th:if="${person.image!=null}"><a th:href="@{'/view/persons/imageCard/'+ ${person.id}}"><p th:text="#{my.msg.card}"></p></a></div>
+        </td>
+        <td><a th:href="@{'/view/persons/'+ ${person.id}}"><p th:text="#{my.msg.edit}"></p></a></td>
+        <td><a onclick="return confirm('Delete?');" th:href="@{'/view/persons/delete/'+ ${person.id}}"><p th:text="#{my.msg.delete}"></p></a></td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>
